@@ -160,6 +160,7 @@
             this.txtTelefono.Size = new System.Drawing.Size(396, 20);
             this.txtTelefono.TabIndex = 17;
             this.txtTelefono.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label5
             // 

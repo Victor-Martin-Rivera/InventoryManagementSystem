@@ -87,5 +87,18 @@ namespace InventoryManagementSystem
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnSave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtCPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

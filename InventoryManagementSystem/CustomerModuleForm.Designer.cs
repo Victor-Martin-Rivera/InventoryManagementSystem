@@ -121,6 +121,7 @@ namespace InventoryManagementSystem
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSave_KeyPress);
             // 
             // txtCPhone
             // 
@@ -128,6 +129,7 @@ namespace InventoryManagementSystem
             this.txtCPhone.Name = "txtCPhone";
             this.txtCPhone.Size = new System.Drawing.Size(396, 22);
             this.txtCPhone.TabIndex = 22;
+            this.txtCPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPhone_KeyPress);
             // 
             // label5
             // 
