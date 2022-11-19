@@ -60,7 +60,7 @@ namespace InventoryManagementSystem
                 productModule.txtPPrice.Text = dgvProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
                 productModule.txtPDes.Text = dgvProduct.Rows[e.RowIndex].Cells[5].Value.ToString();
                 productModule.comboCat.Text = dgvProduct.Rows[e.RowIndex].Cells[6].Value.ToString();
-                productModule.txtUbicacion.Text = dgvProduct.Rows[e.RowIndex].Cells[6].Value.ToString();
+                //productModule.txtUbicacion.Text = dgvProduct.Rows[e.RowIndex].Cells[6].Value.ToString();
                 productModule.btnSave.Enabled = false;
                 productModule.btnUpdate.Enabled = true;                
                 productModule.ShowDialog();

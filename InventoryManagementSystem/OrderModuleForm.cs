@@ -49,7 +49,7 @@ namespace InventoryManagementSystem
         {
             int i = 0;
             dgvProduct.Rows.Clear();
-            cm = new SqlCommand("SELECT * FROM tbProduct WHERE CONCAT(Id_Producto, nombre_producto, cantidad_producto, descripcion_producto, categoria_producto, ubicacion) LIKE '%" + txtSearchProd.Text + "%'", con);
+            cm = new SqlCommand("SELECT * FROM tbProduct WHERE CONCAT(Id_Producto, nombre_producto, precio_producto, descripcion_producto, categoria_producto) LIKE '%" + txtSearchProd.Text + "%'", con);
             con.Open();
             dr = cm.ExecuteReader();
             while (dr.Read())
@@ -109,17 +109,28 @@ namespace InventoryManagementSystem
         {
             try
             {
+                
                 if (txtCId.Text == "")
                 {
                     MessageBox.Show("Por favor seleccione un cliente!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtPid.Text == "")
+                else if (txtPid.Text == "")
                 {
                     MessageBox.Show("Por favor seleccione un producto!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (MessageBox.Show("¿Esta seguro de que desea insertar este pedido?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                else if (Convert.ToInt16(UDQty.Value) == 0)
+                {
+                    MessageBox.Show("Por favor seleccione una cantidad mayor a 0 o valida!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //else if (Convert.ToString(UDQty.Text) == "")
+                //{
+                //    MessageBox.Show("Por favor no dejar el campo vacio!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+                else if (MessageBox.Show("¿Esta seguro de que desea insertar este pedido?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     cm = new SqlCommand("INSERT INTO tbOrder(fecha_pedido, Id_Producto, Id_Cliente, cantidad, precio, total)VALUES(@fecha_pedido, @Id_Producto, @Id_Cliente, @cantidad, @precio, @total)", con);
@@ -136,12 +147,12 @@ namespace InventoryManagementSystem
                     MessageBox.Show("El pedido se ha insertado correctamente.");
                     
 
-                    cm = new SqlCommand("UPDATE tbProduct SET cantidad_producto=(cantidad_producto-@cantidad_producto) WHERE Id_Producto LIKE '" + txtPid.Text +"' ", con);                    
-                    cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(UDQty.Value));
+                    //cm = new SqlCommand("UPDATE TbProduct SET cantidad_producto=(cantidad_producto-@cantidad_producto) WHERE Id_Producto LIKE '" + txtPid.Text +"' ", con);                    
+                    //cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(UDQty.Value));
                    
-                    con.Open();
-                    cm.ExecuteNonQuery();
-                    con.Close();
+                    //con.Open();
+                    //cm.ExecuteNonQuery();
+                    //con.Close();
                     Clear();
                     LoadProduct();
 
@@ -164,7 +175,7 @@ namespace InventoryManagementSystem
             txtPName.Clear();
 
             txtPrice.Clear();
-            UDQty.Value = 1;
+            UDQty.Value = 0;
             txtTotal.Clear();
             dtOrder.Value = DateTime.Now;
         }
