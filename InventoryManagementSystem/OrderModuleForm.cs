@@ -129,18 +129,18 @@ namespace InventoryManagementSystem
                     MessageBox.Show("Por favor seleccione una cantidad mayor a 0 o valida!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                //else if (Convert.ToString(UDQty.Text) == "")
-                //{
-                //    MessageBox.Show("Por favor no dejar el campo vacio!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
+                else if (Convert.ToString(UDQty.Text) == "")
+                {
+                    MessageBox.Show("Por favor no dejar el campo vacio!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 else if (MessageBox.Show("¿Esta seguro de que desea insertar este pedido?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     cm = new SqlCommand("INSERT INTO tbOrder(fecha_pedido, Id_Producto, Id_Cliente, cantidad, precio, total)VALUES(@fecha_pedido, @Id_Producto, @Id_Cliente, @cantidad, @precio, @total)", con);
                     cm.Parameters.AddWithValue("@fecha_pedido", dtOrder.Value);
-                    cm.Parameters.AddWithValue("@Id_Producto", Convert.ToInt32(txtPid.Text));
-                    cm.Parameters.AddWithValue("@Id_Cliente", Convert.ToInt32(txtCId.Text));
+                    cm.Parameters.AddWithValue("@Id_Producto", Convert.ToInt16(txtPid.Text));
+                    cm.Parameters.AddWithValue("@Id_Cliente", Convert.ToInt16(txtCId.Text));
                     cm.Parameters.AddWithValue("@cantidad", Convert.ToInt32(UDQty.Value));
                     cm.Parameters.AddWithValue("@precio", Convert.ToInt32(txtPrice.Text));
                     cm.Parameters.AddWithValue("@total", Convert.ToInt32(txtTotal.Text));
@@ -151,12 +151,12 @@ namespace InventoryManagementSystem
                     MessageBox.Show("El pedido se ha insertado correctamente.");
                     
 
-                    //cm = new SqlCommand("UPDATE TbProduct SET cantidad_producto=(cantidad_producto-@cantidad_producto) WHERE Id_Producto LIKE '" + txtPid.Text +"' ", con);                    
-                    //cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(UDQty.Value));
+                    cm = new SqlCommand("UPDATE TbProduct SET cantidad_producto=(cantidad_producto-@cantidad_producto) WHERE Id_Producto LIKE '" + txtPid.Text +"' ", con);                    
+                    cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(UDQty.Value));
                    
-                    //con.Open();
-                    //cm.ExecuteNonQuery();
-                    //con.Close();
+                    con.Open();
+                    cm.ExecuteNonQuery();
+                    con.Close();
                     Clear();
                     LoadProduct();
 

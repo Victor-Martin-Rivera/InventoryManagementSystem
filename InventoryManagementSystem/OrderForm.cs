@@ -51,18 +51,6 @@ namespace InventoryManagementSystem
             LoadOrder();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            LoadOrder();
-        }
-
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-            OrderModuleForm moduleForm = new OrderModuleForm();
-            moduleForm.ShowDialog();
-            LoadOrder();
-        }
-
         private void btnAdd_Click_2(object sender, EventArgs e)
         {
             OrderModuleForm moduleForm = new OrderModuleForm();
@@ -89,14 +77,14 @@ namespace InventoryManagementSystem
                     con.Close();
                     MessageBox.Show("El registro se ha eliminado correctamente!");
 
-                    //cm = new SqlCommand("UPDATE tbProduct SET cantidad_producto=(cantidad_producto+@cantidad_producto) WHERE Id_Producto LIKE '" + dgvOrder.Rows[e.RowIndex].Cells[3].Value.ToString()+ "' ", con);
-                    //cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(dgvOrder.Rows[e.RowIndex].Cells[3].Value.ToString()));
+                    cm = new SqlCommand("UPDATE tbProduct SET cantidad_producto=(cantidad_producto+@cantidad_producto) WHERE Id_Producto LIKE '" + dgvOrder.Rows[e.RowIndex].Cells[3].Value.ToString()+ "' ", con);
+                    cm.Parameters.AddWithValue("@cantidad_producto", Convert.ToInt16(dgvOrder.Rows[e.RowIndex].Cells[7].Value.ToString()));
 
-                    //con.Open();
-                    //cm.ExecuteNonQuery();
-                    //con.Close();
-
-                }
+                    con.Open();
+                    cm.ExecuteNonQuery();
+                    con.Close();
+                    
+                } 
             }
             LoadOrder();
         }
