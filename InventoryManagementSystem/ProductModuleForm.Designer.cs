@@ -162,6 +162,7 @@ namespace InventoryManagementSystem
             this.txtPPrice.Size = new System.Drawing.Size(396, 22);
             this.txtPPrice.TabIndex = 20;
             this.txtPPrice.TextChanged += new System.EventHandler(this.txtPPrice_TextChanged);
+            this.txtPPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPPrice_KeyPress);
             // 
             // label4
             // 
@@ -178,6 +179,7 @@ namespace InventoryManagementSystem
             this.txtPQty.Name = "txtPQty";
             this.txtPQty.Size = new System.Drawing.Size(396, 22);
             this.txtPQty.TabIndex = 18;
+            this.txtPQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPQty_KeyPress);
             // 
             // label3
             // 

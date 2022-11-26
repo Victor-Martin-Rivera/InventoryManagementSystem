@@ -81,7 +81,11 @@ namespace InventoryManagementSystem
                 UDQty.Value = UDQty.Value - 1;
                 return;
             }
-            if (Convert.ToInt16(UDQty.Value) > 0)
+            else if(Convert.ToInt16(UDQty.Value) == 0)
+            {
+                txtTotal.Text = "";
+            }
+            else if (Convert.ToInt16(UDQty.Value) > 0)
             {
                 int total = Convert.ToInt16(txtPrice.Text) * Convert.ToInt16(UDQty.Value);
                 txtTotal.Text = total.ToString();

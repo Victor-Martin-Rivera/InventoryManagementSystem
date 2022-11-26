@@ -55,6 +55,7 @@ namespace InventoryManagementSystem
                 con.Open();
                 dr = cm.ExecuteReader();
                 dr.Read();
+               
                 if (dr.HasRows)
                 {
                     MessageBox.Show("Bienvenid@ " + dr["nombre_completo"].ToString() + " ", "Acceso Permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
