@@ -55,8 +55,8 @@ namespace InventoryManagementSystem
                     cm.Parameters.AddWithValue("@contra", txtContra.Text);
                     cm.Parameters.AddWithValue("@telefono", txtTelefono.Text);
 
-                    cm2 = new SqlCommand("INSERT INTO tbCustomer(customer_nombre,customer_telefono)VALUES(@customer_nombre, @customer_telefono)", con);
-                    cm2.Parameters.AddWithValue("@customer_nombre", txtUsuario.Text);
+                    cm2 = new SqlCommand("INSERT INTO tbCustomer(customer_nombre, customer_telefono)VALUES(@customer_nombre, @customer_telefono)", con);
+                    cm2.Parameters.AddWithValue("@customer_nombre", txtCompleto.Text);
                     cm2.Parameters.AddWithValue("@customer_telefono", txtTelefono.Text);
                     MessageBox.Show("El usuario se ha guardado correctamente.");
 

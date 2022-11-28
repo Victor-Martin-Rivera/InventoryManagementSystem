@@ -43,7 +43,7 @@ namespace InventoryManagementSystem
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             CustomerModuleForm moduleForm = new CustomerModuleForm();
-            moduleForm.btnSave.Enabled = true;
+           
             moduleForm.btnUpdate.Enabled = false;
             moduleForm.ShowDialog();
             LoadCustomer();
@@ -59,7 +59,7 @@ namespace InventoryManagementSystem
                 customerModule.txtCName.Text = dgvCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
                 customerModule.txtCPhone.Text = dgvCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-                customerModule.btnSave.Enabled = false;
+                
                 customerModule.btnUpdate.Enabled = true;
                 customerModule.ShowDialog();
             }

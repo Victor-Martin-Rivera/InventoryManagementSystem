@@ -35,7 +35,6 @@ namespace InventoryManagementSystem
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.txtCPhone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCName = new System.Windows.Forms.TextBox();
@@ -108,21 +107,6 @@ namespace InventoryManagementSystem
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(231, 166);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(94, 37);
-            this.btnSave.TabIndex = 23;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            this.btnSave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSave_KeyPress);
-            // 
             // txtCPhone
             // 
             this.txtCPhone.Location = new System.Drawing.Point(133, 115);
@@ -175,7 +159,6 @@ namespace InventoryManagementSystem
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCPhone);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCName);
@@ -201,7 +184,6 @@ namespace InventoryManagementSystem
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnClear;
         public System.Windows.Forms.Button btnUpdate;
-        public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.TextBox txtCPhone;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtCName;

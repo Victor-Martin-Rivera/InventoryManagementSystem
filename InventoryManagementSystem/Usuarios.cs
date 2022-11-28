@@ -15,6 +15,7 @@ namespace InventoryManagementSystem
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\marti\OneDrive\Documentos\dbInventory.mdf;Integrated Security=True;Connect Timeout=30");
         SqlCommand cm = new SqlCommand();
+        SqlCommand cm2 = new SqlCommand();
         SqlDataReader dr;
         public Usuarios()
         {
@@ -50,7 +51,7 @@ namespace InventoryManagementSystem
                 userModule.txtPass.Text = dgvUser.Rows[e.RowIndex].Cells[3].Value.ToString();
                 userModule.txtPhone.Text = dgvUser.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-                userModule.btnSave.Enabled = false;
+               
                 userModule.btnUpdate.Enabled = true;
                 userModule.txtUserName.Enabled = false;
                 userModule.ShowDialog();
@@ -61,7 +62,9 @@ namespace InventoryManagementSystem
                 {
                     con.Open();
                     cm = new SqlCommand("DELETE FROM tbLogin WHERE username LIKE '" + dgvUser.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                    //cm2 = new SqlCommand("DELETE FROM tbCustomer WHERE customer_nombre LIKE '" + dgvUser.Rows[e.RowIndex].Cells[2].Value.ToString() + "'", con);
                     cm.ExecuteNonQuery();
+                    //cm2.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show("Usuario eliminado correctamente!");
                 }
@@ -72,7 +75,7 @@ namespace InventoryManagementSystem
         private void btnAdd_Click(object sender, EventArgs e)
         {
             EditarUsuario userModule = new EditarUsuario();
-            userModule.btnSave.Enabled = true;
+           
             userModule.btnUpdate.Enabled = false;
             userModule.ShowDialog();
             LoadUser();

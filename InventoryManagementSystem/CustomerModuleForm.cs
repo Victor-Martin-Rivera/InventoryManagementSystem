@@ -15,35 +15,36 @@ namespace InventoryManagementSystem
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\marti\OneDrive\Documentos\dbInventory.mdf;Integrated Security=True;Connect Timeout=30");
         SqlCommand cm = new SqlCommand();
+        
         public CustomerModuleForm()
         {
             InitializeComponent();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {               
-                if (MessageBox.Show("¿Esta seguro de que desea guardar este cliente?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {               
+        //        if (MessageBox.Show("¿Esta seguro de que desea guardar este cliente?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //        {
+        //            cm = new SqlCommand("INSERT INTO tbCustomer(customer_nombre,customer_telefono)VALUES(@customer_nombre, @customer_telefono)", con);
+        //            cm.Parameters.AddWithValue("@customer_nombre", txtCName.Text);
+        //            cm.Parameters.AddWithValue("@customer_telefono", txtCPhone.Text);
 
-                    cm = new SqlCommand("INSERT INTO tbCustomer(customer_nombre,customer_telefono)VALUES(@customer_nombre, @customer_telefono)", con);
-                    cm.Parameters.AddWithValue("@customer_nombre", txtCName.Text);
-                    cm.Parameters.AddWithValue("@customer_telefono", txtCPhone.Text);
-                    con.Open();
-                    cm.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("El cliente se ha guardado correctamente.");
-                    Clear();
-                }
+        //            con.Open();
+        //            cm.ExecuteNonQuery();
+        //            con.Close();
+        //            MessageBox.Show("El cliente se ha guardado correctamente.");
+        //            Clear();
+        //        }
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         public void Clear()
         {
@@ -54,7 +55,6 @@ namespace InventoryManagementSystem
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
-            btnSave.Enabled = true;
             btnUpdate.Enabled = false;
         }
 
@@ -71,10 +71,14 @@ namespace InventoryManagementSystem
                 {
 
                     cm = new SqlCommand("UPDATE tbCustomer SET customer_nombre = @customer_nombre,customer_telefono=@customer_telefono WHERE Id_Cliente LIKE '" + lblCId.Text + "' ", con);
-                    cm.Parameters.AddWithValue("@customer_nombre", txtCName.Text);               
+                    cm.Parameters.AddWithValue("@customer_nombre", txtCName.Text);
                     cm.Parameters.AddWithValue("@customer_telefono", txtCPhone.Text);
+
+                    
+
                     con.Open();
                     cm.ExecuteNonQuery();
+                   
                     con.Close();
                     MessageBox.Show("El cliente ha sido actualizado con éxito!");
                     this.Dispose();
