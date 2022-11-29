@@ -15,7 +15,6 @@ namespace InventoryManagementSystem
     {
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\marti\OneDrive\Documentos\dbInventory.mdf;Integrated Security=True;Connect Timeout=30");
         SqlCommand cm = new SqlCommand();
-        SqlCommand cm2 = new SqlCommand();
        
         public Registrarte()
         {
@@ -49,26 +48,20 @@ namespace InventoryManagementSystem
                 if (MessageBox.Show("¿Está seguro de que desea guardar este usuario?", "Guardar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    cm = new SqlCommand("INSERT INTO tbLogin(username,nombre_completo,contra,telefono)VALUES(@username,@nombre_completo,@contra,@telefono)", con);
-                    cm.Parameters.AddWithValue("@username", txtUsuario.Text);
+                    cm = new SqlCommand("INSERT INTO tbCustomer(nombre_usuario, nombre_completo, password, telefono)VALUES(@nombre_usuario, @nombre_completo,@password, @telefono)", con);
+                    cm.Parameters.AddWithValue("@nombre_usuario", txtUsuario.Text);
                     cm.Parameters.AddWithValue("@nombre_completo", txtCompleto.Text);
-                    cm.Parameters.AddWithValue("@contra", txtContra.Text);
+                    cm.Parameters.AddWithValue("@password", txtContra.Text);
                     cm.Parameters.AddWithValue("@telefono", txtTelefono.Text);
-
-                    cm2 = new SqlCommand("INSERT INTO tbCustomer(customer_nombre, customer_telefono)VALUES(@customer_nombre, @customer_telefono)", con);
-                    cm2.Parameters.AddWithValue("@customer_nombre", txtCompleto.Text);
-                    cm2.Parameters.AddWithValue("@customer_telefono", txtTelefono.Text);
                     MessageBox.Show("El usuario se ha guardado correctamente.");
 
                     Clear();
                     con.Open();
-                    cm2.ExecuteNonQuery();
                     cm.ExecuteNonQuery();
                     con.Close();
 
                     LoginUsuario main = new LoginUsuario();
                     this.Hide();
-
                 }
 
             }

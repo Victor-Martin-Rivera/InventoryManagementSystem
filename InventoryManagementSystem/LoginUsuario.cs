@@ -49,9 +49,9 @@ namespace InventoryManagementSystem
         {
             try
             {
-                cm = new SqlCommand("SELECT * FROM tbLogin WHERE username=@username AND contra=@contra", con);
-                cm.Parameters.AddWithValue("@username", txtNombre.Text);
-                cm.Parameters.AddWithValue("@contra", txtContra.Text);
+                cm = new SqlCommand("SELECT * FROM tbCustomer WHERE nombre_usuario=@nombre_usuario AND password=@password", con);
+                cm.Parameters.AddWithValue("@nombre_usuario", txtNombre.Text);
+                cm.Parameters.AddWithValue("@password", txtContra.Text);
                 con.Open();
                 dr = cm.ExecuteReader();
                 dr.Read();

@@ -48,8 +48,10 @@ namespace InventoryManagementSystem
 
         public void Clear()
         {
-            txtCName.Clear();
-            txtCPhone.Clear();           
+            txtUserName.Clear();
+            txtFullName.Clear();
+            txtPass.Clear();
+            txtPhone.Clear();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -70,11 +72,13 @@ namespace InventoryManagementSystem
                 if (MessageBox.Show("¿Esta seguro de que desea actualizar este cliente?", "Actualizar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    cm = new SqlCommand("UPDATE tbCustomer SET customer_nombre = @customer_nombre,customer_telefono=@customer_telefono WHERE Id_Cliente LIKE '" + lblCId.Text + "' ", con);
-                    cm.Parameters.AddWithValue("@customer_nombre", txtCName.Text);
-                    cm.Parameters.AddWithValue("@customer_telefono", txtCPhone.Text);
+                    cm = new SqlCommand("UPDATE tbCustomer SET nombre_usuario = @nombre_usuario,nombre_completo=@nombre_completo, password = @password, telefono = @telefono WHERE Id_Cliente LIKE '" + lblCId.Text + "' ", con);
+                    cm.Parameters.AddWithValue("@nombre_usuario", txtUserName.Text);
+                    cm.Parameters.AddWithValue("@nombre_completo", txtFullName.Text);
+                    cm.Parameters.AddWithValue("@password", txtPass.Text);
+                    cm.Parameters.AddWithValue("@telefono", txtPhone.Text);
 
-                    
+
 
                     con.Open();
                     cm.ExecuteNonQuery();

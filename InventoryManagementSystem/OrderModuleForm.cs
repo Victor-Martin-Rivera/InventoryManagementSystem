@@ -33,7 +33,7 @@ namespace InventoryManagementSystem
         {
             int i = 0;
             dgvCustomer.Rows.Clear();
-            cm = new SqlCommand("SELECT Id_Cliente, customer_nombre FROM tbCustomer WHERE CONCAT(Id_Cliente,customer_nombre) LIKE '%"+txtSearchCust.Text+"%'", con);
+            cm = new SqlCommand("SELECT Id_Cliente, nombre_completo FROM tbCustomer WHERE CONCAT(Id_Cliente,nombre_completo) LIKE '%"+txtSearchCust.Text+"%'", con);
             con.Open();
             dr = cm.ExecuteReader();
             while (dr.Read())

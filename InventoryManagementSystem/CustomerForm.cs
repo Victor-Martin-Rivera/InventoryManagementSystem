@@ -32,7 +32,7 @@ namespace InventoryManagementSystem
             while (dr.Read())
             {
                 i++;
-                dgvCustomer.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+                dgvCustomer.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
             con.Close();
@@ -56,10 +56,12 @@ namespace InventoryManagementSystem
             {
                 CustomerModuleForm customerModule = new CustomerModuleForm();
                 customerModule.lblCId.Text = dgvCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
-                customerModule.txtCName.Text = dgvCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
-                customerModule.txtCPhone.Text = dgvCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
+                customerModule.txtUserName.Text = dgvCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
+                customerModule.txtFullName.Text = dgvCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
+                customerModule.txtPass.Text = dgvCustomer.Rows[e.RowIndex].Cells[4].Value.ToString();
+                customerModule.txtPhone.Text = dgvCustomer.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-                
+
                 customerModule.btnUpdate.Enabled = true;
                 customerModule.ShowDialog();
             }
@@ -75,6 +77,14 @@ namespace InventoryManagementSystem
                 }
             }
             LoadCustomer();
+        }
+
+        private void dgvCustomer_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.Value != null)
+            {
+                e.Value = new String('•', e.Value.ToString().Length);
+            }
         }
     }
 }

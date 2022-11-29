@@ -28,7 +28,7 @@ namespace InventoryManagementSystem
             double total = 0;
             int i = 0;
             dgvOrder.Rows.Clear();
-            cm = new SqlCommand("SELECT Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.customer_nombre, cantidad, precio, total FROM tbOrder AS O JOIN tbCustomer AS C ON O.Id_Cliente=C.Id_Cliente JOIN tbProduct AS P ON O.Id_Producto=P.Id_Producto WHERE CONCAT (Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.customer_nombre, cantidad, precio) LIKE '%" + txtSearch.Text + "%'", con);
+            cm = new SqlCommand("SELECT Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.nombre_completo, cantidad, precio, total FROM tbOrder AS O JOIN tbCustomer AS C ON O.Id_Cliente=C.Id_Cliente JOIN tbProduct AS P ON O.Id_Producto=P.Id_Producto WHERE CONCAT (Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.nombre_completo, cantidad, precio) LIKE '%" + txtSearch.Text + "%'", con);
             con.Open();
             dr = cm.ExecuteReader();
             while (dr.Read())
