@@ -82,10 +82,5 @@ namespace InventoryManagementSystem
                 user.ShowDialog();
             }
         }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
-        {
-            openChildForm(new Usuarios());
-        }
     }
 }

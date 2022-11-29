@@ -79,7 +79,6 @@ namespace InventoryManagementSystem
                     cm.Parameters.AddWithValue("@telefono", txtPhone.Text);
 
 
-
                     con.Open();
                     cm.ExecuteNonQuery();
                    
