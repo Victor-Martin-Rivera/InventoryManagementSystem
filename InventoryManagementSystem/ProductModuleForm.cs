@@ -51,7 +51,7 @@ namespace InventoryManagementSystem
                 if (max <= 0)
                 {
                     MessageBox.Show("Introduce una cantidad mayor a 0");
-
+a
                 }
                 else if (MessageBox.Show("¿Está seguro de que desea guardar este producto?", "Guardar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -157,5 +157,6 @@ namespace InventoryManagementSystem
                 e.Handled = true;
             }
         }
+
     }
 }

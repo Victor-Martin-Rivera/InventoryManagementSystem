@@ -27,6 +27,7 @@ namespace InventoryManagementSystem
         {
             double total = 0;
             int i = 0;
+            int id = 0;
             dgvOrder.Rows.Clear();
             cm = new SqlCommand("SELECT Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.nombre_completo, cantidad, precio, total FROM tbOrder AS O JOIN tbCustomer AS C ON O.Id_Cliente=C.Id_Cliente JOIN tbProduct AS P ON O.Id_Producto=P.Id_Producto WHERE CONCAT (Id_Pedido, fecha_pedido, O.Id_Producto, P.nombre_producto, O.Id_Cliente, C.nombre_completo, cantidad, precio) LIKE '%" + txtSearch.Text + "%'", con);
             con.Open();
@@ -34,7 +35,8 @@ namespace InventoryManagementSystem
             while (dr.Read())
             {
                 i++;
-                dgvOrder.Rows.Add(i, dr[0].ToString(), Convert.ToDateTime(dr[1].ToString()).ToString("dd/MM/yyyy"), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
+                id++;
+                dgvOrder.Rows.Add(i, id, Convert.ToDateTime(dr[1].ToString()).ToString("dd/MM/yyyy"), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
                 total += Convert.ToInt32(dr[8].ToString());
             }
             dr.Close();
@@ -72,7 +74,7 @@ namespace InventoryManagementSystem
                 if (MessageBox.Show("¿Esta seguro de que desea eliminar este pedido?", "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     con.Open();
-                    cm = new SqlCommand("DELETE FROM tbOrder WHERE Id_Pedido LIKE '" + dgvOrder.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                    cm = new SqlCommand("DELETE FROM tbOrder WHERE Id_Producto LIKE '" + dgvOrder.Rows[e.RowIndex].Cells[3].Value.ToString() + "'", con);
                     cm.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show("El registro se ha eliminado correctamente!");
